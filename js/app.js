@@ -14,8 +14,6 @@ let imgThree = document.getElementById('img-three');
 let resultsBtn = document.getElementById('show-results-btn');
 let resultsList = document.getElementById('results-list');
 
-
-
 function Product(name, photoExtension = 'jpg'){
   this.name = name;
   this.photo = `img/${name}.${photoExtension}`;
@@ -36,8 +34,6 @@ for(let i = 0; i < productNames.length; i++){
 function randomIndexGenerator(){
   return Math.floor(Math.random() * allProducts.length);
 }
-
-
 
 function renderImgs(){
   let imgOneIndex = randomIndexGenerator();
@@ -76,7 +72,7 @@ function handleClick(event){
     }
   }
   totalVotes--;
-  
+
   renderImgs();
 
   if(totalVotes === 0){
@@ -95,8 +91,6 @@ function handleShowResults(){
   }
 
 }
-
-
 
 imgContainer.addEventListener('click', handleClick);
 resultsBtn.addEventListener('click', handleShowResults);
