@@ -7,6 +7,7 @@ let productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegu
 
 
 
+
 let imgContainer = document.getElementById('img-container');
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
@@ -42,6 +43,7 @@ function renderImgs(){
 
   while(imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex) {
     imgTwoIndex = randomIndexGenerator();
+    imgThreeIndex = randomIndexGenerator();
   }
 
   imgOne.src = allProducts[imgOneIndex].photo;
@@ -61,7 +63,9 @@ function renderImgs(){
 
 }
 
-renderImgs();
+let x = renderImgs();
+console.log(x);
+
 
 
 
@@ -84,15 +88,96 @@ function handleClick(event){
 
 function handleShowResults(){
   if(totalVotes === 0){
-    for(let i = 0; i < allProducts.length; i++){
-      let liElem = document.createElement('li');
-      liElem.textContent = `${allProducts[i].name} had ${allProducts[i].votes} votes, and was seen ${allProducts[i].views} times`;
-      resultsList.appendChild(liElem);
-    }
+    renderChart();
+    // for(let i = 0; i < allProducts.length; i++){
+    //   let liElem = document.createElement('li');
+    //   liElem.textContent = `${allProducts[i].name} had ${allProducts[i].votes} votes, and was seen ${allProducts[i].views} times`;
+    //   resultsList.appendChild(liElem);
+    // }
     resultsBtn.removeEventListener('click', handleShowResults);
   }
 
 }
+
+
+let canvasElem = document.getElementById('my-chart');
+
+function renderChart() {
+
+  let productNames = [];
+  let productVotes = [];
+  let productViews = [];
+
+  for(let i = 0; i < allProducts.length; i++){
+    productNames.push(allProducts[i].name);
+    productVotes.push(allProducts[i].votes);
+    productViews.push(allProducts[i].views);
+  }
+
+let myObject = {
+  type: 'bar',
+  data: {
+      labels: productNames,
+      datasets: [{
+          label: '# of Votes',
+          data: productVotes,
+          backgroundColor: [
+              'rgba(255, 204, 0, 0.8)',
+              'rgba(255, 204, 0, 0.8)',
+              'rgba(255, 204, 0, 0.8)',
+              'rgba(255, 204, 0, 0.8)',
+              'rgba(255, 204, 0, 0.8)',
+              'rgba(255, 204, 0, 0.8)'
+          ],
+          borderColor: [
+              'rgba(0, 51, 102, 1)',
+              'rgba(0, 51, 102, 1)',
+              'rgba(0, 51, 102, 1)',
+              'rgba(0, 51, 102, 1)',
+              'rgba(0, 51, 102, 1)',
+              'rgba(0, 51, 102, 1)'
+          ],
+          borderWidth: 1
+      },
+      {
+        label: '# of Views',
+        data: productViews,
+        backgroundColor: [
+            'rgba(204, 204, 204, 0.8)',
+            'rgba(204, 204, 204, 0.8)',
+            'rgba(204, 204, 204, 0.8)',
+            'rgba(204, 204, 204, 0.8)',
+            'rgba(204, 204, 204, 0.8)',
+            'rgba(204, 204, 204, 0.8)'
+        ],
+        borderColor: [
+            'rgba(0, 51, 102, 1)',
+            'rgba(0, 51, 102, 1)',
+            'rgba(0, 51, 102, 1)',
+            'rgba(0, 51, 102, 1)',
+            'rgba(0, 51, 102, 1)',
+            'rgba(0, 51, 102, 1)'
+        ],
+        borderWidth: 1
+    }
+
+    ],
+      
+  },
+  
+  options: {
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
+}
+  new Chart(canvasElem, myObject);
+}
+
+
+
 
 imgContainer.addEventListener('click', handleClick);
 resultsBtn.addEventListener('click', handleShowResults);
