@@ -1,10 +1,10 @@
 
 'use strict';
 
-
 let totalVotes = 25;
 let allProducts = [];
 let productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu','dog-duck', 'dragon','pen', 'pet-sweep','scissors', 'shark','sweep', 'tauntaun','unicorn', 'water-can','wine-glass'];
+
 
 
 let imgContainer = document.getElementById('img-container');
@@ -18,7 +18,7 @@ function Product(name, photoExtension = 'jpg'){
   this.name = name;
   this.photo = `img/${name}.${photoExtension}`;
   this.views = 0;
-  this.votes = 0
+  this.votes = 0;
 
   allProducts.push(this);
 }
@@ -62,6 +62,8 @@ function renderImgs(){
 }
 
 renderImgs();
+
+
 
 function handleClick(event){
   let imgClicked = event.target.alt;
