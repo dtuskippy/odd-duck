@@ -13,16 +13,27 @@ header {
 }
 
 h1 {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Fredoka One', cursive;
   font-size: 3vw;
   color: whitesmoke;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
 }
+
 main {
   width: 1200px;
   margin: auto;
- 
+}
+
+ h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.5vw;
+  color: #003087;
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
  }
 
 #img-container {
@@ -37,10 +48,11 @@ main {
 img {
   width: auto;
   height: auto;
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 300px;
+  max-height: 225px;
   flex: 1 400px;
   padding: 15px;
+  border: 2px solid #003087;
 }
 
 #show-results-btn {
@@ -50,7 +62,10 @@ img {
   font-size: 22px;
   padding-top: 13px;
   margin-top: 20px;
-  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 50;
+  font-family: 'Fredoka One', cursive;
   height: 40px;
   width: 200px;
   border: 5px solid #ffcc00;
@@ -67,6 +82,16 @@ img {
   width: 450px;
   margin-top: 20px;
 
+}
+
+#my-chart {
+  height: auto;
+  width:  auto;
+  max-width: 800px;
+  max-height: 400px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
