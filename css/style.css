@@ -2,7 +2,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #F2DFCE;
-  
 }
 
 header {
@@ -21,6 +20,7 @@ h1 {
 }
 
 main {
+  height: 1000px;
   width: 1200px;
   margin: auto;
 }
@@ -34,7 +34,6 @@ main {
   margin-bottom: 30px;
 }
 
- }
 
 #img-container {
   /* border: 3px double #003087; */
@@ -59,15 +58,15 @@ img {
   background-color: #8F8F8C;
   color: whitesmoke;
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
   padding-top: 13px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   font-weight: 50;
   font-family: 'Fredoka One', cursive;
-  height: 40px;
-  width: 200px;
+  height: 30px;
+  width: 150px;
   border: 5px solid #ffcc00;
 }
 
@@ -85,10 +84,8 @@ img {
 }
 
 #my-chart {
-  height: auto;
-  width:  auto;
-  max-width: 800px;
-  max-height: 400px;
+  width: 1000px;
+  height: 500px;
   margin-top: 30px;
   margin-right: auto;
   margin-left: auto;
