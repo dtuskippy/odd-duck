@@ -13,7 +13,16 @@ let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 let resultsBtn = document.getElementById('show-results-btn');
-let resultsList = document.getElementById('results-list');
+
+
+let retrievedProducts = localStorage.getItem('myProducts');
+
+console.log('retrievedProducts', retrievedProducts);
+
+let parsedProducts = JSON.parse(retrievedProducts);
+
+console.log('parsed Products >>> ', parsedProducts);
+
 
 function Product(name, photoExtension = 'jpg'){
   this.name = name;
@@ -24,13 +33,18 @@ function Product(name, photoExtension = 'jpg'){
   allProducts.push(this);
 }
 
-for(let i = 0; i < productNames.length; i++){
-  if(productNames[i] === 'sweep'){
-    new Product(productNames[i], 'png');
-  }else{
-    new Product(productNames[i]);
+if(retrievedProducts) {
+  allProducts = parsedProducts;
+} else {
+  for(let i = 0; i < productNames.length; i++){
+    if(productNames[i] === 'sweep'){
+      new Product(productNames[i], 'png');
+    }else{
+      new Product(productNames[i]);
+    }
   }
 }
+
 
 function randomIndexGenerator(){
   return Math.floor(Math.random() * allProducts.length);
@@ -90,18 +104,17 @@ function handleClick(event){
   renderImgs();
 
   if(totalVotes === 0){
+    let stringifiedProducts = JSON.stringify(allProducts);
+    console.log('stringified Products >>>', stringifiedProducts);
+    localStorage.setItem('myProducts', stringifiedProducts);
     imgContainer.removeEventListener('click', handleClick);
   }
 }
 
+
 function handleShowResults(){
   if(totalVotes === 0){
     renderChart();
-    // for(let i = 0; i < allProducts.length; i++){
-    //   let liElem = document.createElement('li');
-    //   liElem.textContent = `${allProducts[i].name} had ${allProducts[i].votes} votes, and was seen ${allProducts[i].views} times`;
-    //   resultsList.appendChild(liElem);
-    // }
     resultsBtn.removeEventListener('click', handleShowResults);
   }
 

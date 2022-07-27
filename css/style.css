@@ -70,19 +70,6 @@ img {
   border: 5px solid #ffcc00;
 }
 
-#results-list {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: 500;
-  font-size: 18px;
-  list-style: circle;
-  list-style-position: inside;
-  overflow: scroll;
-  height: 200px;
-  width: 450px;
-  margin-top: 20px;
-
-}
-
 #my-chart {
   width: 1000px;
   height: 500px;
