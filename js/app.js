@@ -5,24 +5,16 @@ let totalVotes = 25;
 let allProducts = [];
 let productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu','dog-duck', 'dragon','pen', 'pet-sweep','scissors', 'shark','sweep', 'tauntaun','unicorn', 'water-can','wine-glass'];
 
-
-
-
 let imgContainer = document.getElementById('img-container');
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 let resultsBtn = document.getElementById('show-results-btn');
 
-
 let retrievedProducts = localStorage.getItem('myProducts');
-
 console.log('retrievedProducts', retrievedProducts);
-
 let parsedProducts = JSON.parse(retrievedProducts);
-
 console.log('parsed Products >>> ', parsedProducts);
-
 
 function Product(name, photoExtension = 'jpg'){
   this.name = name;
@@ -45,7 +37,6 @@ if(retrievedProducts) {
   }
 }
 
-
 function randomIndexGenerator(){
   return Math.floor(Math.random() * allProducts.length);
 }
@@ -53,21 +44,18 @@ function randomIndexGenerator(){
 
 let productIndexArr = [];
 
-
 function renderImgs(){
-
   while(productIndexArr.length < 6){
     let randomNum = randomIndexGenerator();
     if(!productIndexArr.includes(randomNum)){
     productIndexArr.push(randomNum);
     }
   }
-  
-  
+
   let imgOneIndex = productIndexArr.shift();
   let imgTwoIndex = productIndexArr.shift();
   let imgThreeIndex = productIndexArr.shift();
-   
+
   imgOne.src = allProducts[imgOneIndex].photo;
   imgOne.alt = allProducts[imgOneIndex].name;
   imgOne.name = allProducts[imgOneIndex].name;
@@ -82,14 +70,9 @@ function renderImgs(){
   imgThree.alt = allProducts[imgThreeIndex].name;
   imgThree.name = allProducts[imgThreeIndex].name;
   allProducts[imgThreeIndex].views++;
-
 }
 
 renderImgs();
-
-
-
-
 
 function handleClick(event){
   let imgClicked = event.target.alt;
@@ -111,20 +94,16 @@ function handleClick(event){
   }
 }
 
-
 function handleShowResults(){
   if(totalVotes === 0){
     renderChart();
     resultsBtn.removeEventListener('click', handleShowResults);
   }
-
 }
-
 
 let canvasElem = document.getElementById('my-chart');
 
 function renderChart() {
-
   let productNames = [];
   let productVotes = [];
   let productViews = [];
@@ -196,9 +175,6 @@ let myObject = {
 }
   new Chart(canvasElem, myObject);
 }
-
-
-
 
 imgContainer.addEventListener('click', handleClick);
 resultsBtn.addEventListener('click', handleShowResults);

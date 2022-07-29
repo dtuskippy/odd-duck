@@ -34,7 +34,6 @@ main {
   margin-bottom: 30px;
 }
 
-
 #img-container {
   /* border: 3px double #003087; */
   display: flex;
@@ -77,8 +76,6 @@ img {
   margin-right: auto;
   margin-left: auto;
 }
-
-
 
 footer {
   height: 70px;
